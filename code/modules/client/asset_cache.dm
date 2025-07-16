@@ -281,11 +281,11 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		CRASH("spritesheet [type] cannot register without a name")
 	ensure_stripped()
 
-	var/res_name = "test.css"
+	var/res_name = "spritesheet_[name].css"
 	var/fname = "data/spritesheets/[res_name]"
 	fdel(fname)
 	text2file(generate_css(), fname)
-	register_asset(res_name, fcopy_rsc(fname))
+	register_asset("spritesheet_[name].css", fcopy_rsc(fname))
 	fdel(fname)
 
 	for(var/size_id in sizes)
@@ -300,6 +300,14 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		all += "[name]_[size_id].png"
 	send_asset_list(C, all, verify)
 
+/datum/asset/spritesheet/get_url_mappings()
+	if (!name)
+		return
+
+	. = list("spritesheet_[name].css" = "spritesheet_[name].css")
+	for(var/size_id in sizes)
+		.["[name]_[size_id].png"] = "[name]_[size_id].png"
+	
 /datum/asset/spritesheet/proc/ensure_stripped(sizes_to_strip = sizes)
 	for(var/size_id in sizes_to_strip)
 		var/size = sizes[size_id]
@@ -798,3 +806,18 @@ GLOBAL_LIST_EMPTY(asset_datums)
 			break;
 
 	return data
+
+/datum/asset/spritesheet/anvil_recipes
+	name = "anvil_recipes"
+
+/datum/asset/spritesheet/anvil_recipes/register()
+	for(var/datum/anvil_recipe/recipe as anything in GLOB.anvil_recipes)
+		var/icon = recipe.created_item::icon
+		var/icon_state = recipe.created_item::icon_state
+
+		if(!icon || !icon_state)
+			continue
+
+		Insert("[sanitize_css_class_name("recipe_[REF(recipe)]")]", icon, icon_state)
+
+	..()
