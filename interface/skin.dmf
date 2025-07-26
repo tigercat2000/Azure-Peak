@@ -105,12 +105,25 @@ window "outputwindow"
 	elem "legacy_output_selector"
 		type = CHILD
 		pos = 0,0
-		size = 640x480
+		size = 640x440
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
 		left = "output_legacy"
 		is-vert = false
+	elem "input"
+		type = INPUT
+		pos = 0,445
+		size = 630x25
+		anchor1 = 0,100
+		anchor2 = 100,100
+		font-size = 12
+		text-color = #ad9eb4
+		background-color = #000000
+		is-default = true
+		border = sunken
+		saved-params = ""
+		command = "say"
 
 window "output_legacy"
 	elem "output_legacy"

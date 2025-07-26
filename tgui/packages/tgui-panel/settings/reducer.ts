@@ -22,10 +22,9 @@ const defaultHighlightSetting = createDefaultHighlightSetting();
 
 const initialState = {
   version: 1,
-  fontSize: 13,
+  fontSize: 19,
   fontFamily: FONTS[0],
   lineHeight: 1.2,
-  theme: 'light',
   adminMusicVolume: 0.5,
   // Keep these two state vars for compatibility with other servers
   highlightText: '',

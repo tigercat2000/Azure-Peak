@@ -28,9 +28,9 @@ export const Panel = (props) => {
   }
 
   return (
-    <Pane theme={settings.theme}>
+    <Pane theme="dark">
       <Stack fill vertical>
-        <Stack.Item>
+        <Stack.Item fontSize={1.2}>
           <Section fitted>
             <Stack mr={1} align="center">
               <Stack.Item grow overflowX="auto">
@@ -64,14 +64,14 @@ export const Panel = (props) => {
           </Section>
         </Stack.Item>
         {audio.visible && (
-          <Stack.Item>
+          <Stack.Item fontSize={1.2}>
             <Section>
               <NowPlayingWidget />
             </Section>
           </Stack.Item>
         )}
         {settings.visible && (
-          <Stack.Item>
+          <Stack.Item fontSize={1.2}>
             <SettingsPanel />
           </Stack.Item>
         )}

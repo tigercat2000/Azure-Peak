@@ -6,7 +6,6 @@
 
 // Themes
 import './styles/main.scss';
-import './styles/themes/light.scss';
 
 import { perf } from 'common/perf';
 import { combineReducers } from 'common/redux';
@@ -77,7 +76,7 @@ function setupApp() {
   });
 
   // Resize the panel to match the non-browser output
-  Byond.winget('output').then((output: { size: string }) => {
+  Byond.winget('legacy_output_selector').then((output: { size: string }) => {
     Byond.winset('browseroutput', {
       size: output.size,
     });

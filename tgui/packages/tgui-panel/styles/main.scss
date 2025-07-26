@@ -18,6 +18,7 @@
 @include meta.load-css('~tgui-core/styles/atomic/debug-layout.scss');
 @include meta.load-css('~tgui-core/styles/atomic/outline.scss');
 @include meta.load-css('~tgui-core/styles/atomic/text.scss');
+@include meta.load-css('./components/roguefont.scss');
 
 // Components specific to tgui-panel
 @include meta.load-css('./components/Chat.scss');
@@ -33,9 +34,23 @@
 @include meta.load-css('./tgchat/chat-dark.scss');
 
 :root {
-  --chat-text-color: hsl(210, 50%, 80%);
+  --chat-text-color: #c9c1ba;
 
-  --color-base: hsl(0, 0%, 12.5%);
+  --color-base: hsl(0, 0%, 0%);
   --color-section: hsl(from var(--color-base) h s calc(l - 4.2));
   --base-gradient-spread: 0;
+}
+
+.Tabs--horizontal .Tab {
+  border-radius: 0px;
+  border-left: 2px solid #404040;
+  border-top: 2px solid #404040;
+}
+
+.Button {
+  background-color: black;
+}
+
+.Button:hover {
+  background-color: #222;
 }

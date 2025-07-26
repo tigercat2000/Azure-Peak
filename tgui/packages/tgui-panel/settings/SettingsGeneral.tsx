@@ -11,19 +11,15 @@ import {
   Stack,
 } from 'tgui-core/components';
 import { toFixed } from 'tgui-core/math';
-import { capitalize } from 'tgui-core/string';
 
 import { clearChat, saveChatToDisk } from '../chat/actions';
-import { THEMES } from '../themes';
 import { exportSettings, updateSettings } from './actions';
 import { FONTS } from './constants';
-import { resetPaneSplitters, setEditPaneSplitters } from './scaling';
 import { selectSettings } from './selectors';
 import { importChatSettings } from './settingsImExport';
 
 export function SettingsGeneral(props) {
-  const { theme, fontFamily, fontSize, lineHeight } =
-    useSelector(selectSettings);
+  const { fontFamily, fontSize, lineHeight } = useSelector(selectSettings);
   const dispatch = useDispatch();
   const [freeFont, setFreeFont] = useState(false);
 
@@ -32,25 +28,7 @@ export function SettingsGeneral(props) {
   return (
     <Section>
       <LabeledList>
-        <LabeledList.Item label="Theme">
-          {THEMES.map((THEME) => (
-            <Button
-              key={THEME}
-              selected={theme === THEME}
-              color="transparent"
-              onClick={() =>
-                dispatch(
-                  updateSettings({
-                    theme: THEME,
-                  }),
-                )
-              }
-            >
-              {capitalize(THEME)}
-            </Button>
-          ))}
-        </LabeledList.Item>
-        <LabeledList.Item label="UI sizes">
+        {/* <LabeledList.Item label="UI sizes">
           <Stack>
             <Stack.Item>
               <Button
@@ -72,7 +50,7 @@ export function SettingsGeneral(props) {
               </Button>
             </Stack.Item>
           </Stack>
-        </LabeledList.Item>
+        </LabeledList.Item> */}
         <LabeledList.Item label="Font style">
           <Stack.Item>
             {!freeFont ? (
