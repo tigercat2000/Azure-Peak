@@ -27,7 +27,7 @@ export default defineConfig({
   devtool: false,
   entry: {
     tgui: './packages/tgui',
-    // 'tgui-panel': './packages/tgui-panel',
+    'tgui-panel': './packages/tgui-panel',
     // 'tgui-say': './packages/tgui-say',
   },
   mode: 'production',
